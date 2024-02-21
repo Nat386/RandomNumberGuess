@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel.Design;
+using System.Text;
 
 class RandomNumberGenerator
 {
@@ -6,39 +7,54 @@ class RandomNumberGenerator
     {
         Console.OutputEncoding = Encoding.UTF8;
         Console.InputEncoding = Encoding.Unicode;
-        
-        Console.WriteLine("Добро пожаловать в игру 'Угадай число'!");
-        Console.WriteLine("Я загадал число между: 1 и 100.");
-        Console.WriteLine("Попробуйте угадать.");
 
-        // Создаем объект для генерации чисел
+        Console.WriteLine("Welcome to the Game 'Guess the number!'");
+        Console.WriteLine("I Guessed a number between: 1 and 100.");
+        Console.WriteLine("Try to guess it.");
+
+        Random random = new Random();
+        int RandNum = random.Next(100);
+        int count = 1;
+        int UserNumber = Convert.ToInt32((Console.ReadLine()));
         
-        // Создаем переменную для хранения случайного числа
-        
-        // Создаем переменную для хранения числа попыток
-        
-        // 1. Создаем цикл, который будет выполняться до тех пор, пока не будет угадано число
-        
-        
-        // 2. В теле цикла:
-            // 2.1. Увеличиваем счетчик попыток на 1
+
+            while (count <= 10)
+
+                if (UserNumber == RandNum)
+
+                {
+                    Console.WriteLine("Congratulations! You won!");
+                    break;
+                }
+                else if (UserNumber > RandNum)
+                {
+                    count++;
+                    Console.WriteLine("The number that I guessed is smaller than this");
+                    UserNumber = Convert.ToInt32((Console.ReadLine()));
+                }
+
+                else if (UserNumber < RandNum)
+                {
+                    count++;
+                    Console.WriteLine("The number that I guessed is bigger than this");
+                    UserNumber = Convert.ToInt32((Console.ReadLine()));
+                }
+                else if (count == 10)
+                {
+                    Console.WriteLine("Sorry you lost. The number that I guessed is " + RandNum + "." + "Please try again!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Error. Please enter a number");
+                }
             
-            // 2.2. Считываем число с клавиатуры и сохраняем в переменную
-            
-            // 2.3. Сравниваем загаданное число с введенным пользователем
-            
-            // 2.4. Если числа равны, то выводим сообщение о победе и о количестве попыток
-            
-            // 2.5. Если число пользователя больше загаданного, то выводим сообщение, что число больше загаданного
-            
-            // 2.6. Если число пользователя меньше загаданного, то выводим сообщение, что число меньше загаданного
-            
-            // 2.7. Если число попыток равно 10, то выводим сообщение о проигрыше и загаданное число
-        
-            
+
+        }
+
+
         // Так же помним что надо проверять ввод пользователя на корректность
         // Если пользователь ввел не число, то выводим сообщение об ошибке и просим ввести число еще раз
         // Число джолжно быть в диапазоне от 1 до 100 и целое
-        
+
     }
-}
